@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>행사 안내 대시보드</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Pretendard', sans-serif; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen">
+
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="p-2.5 bg-blue-600 text-white rounded-xl shadow-md">
+          <i data-lucide="calendar"></i>
+        </div>
+        <div>
+          <h1 class="text-xl font-bold text-slate-900">2026 국가대표 현장밀착형 사업 성과공유 및 세미나</h1>
+          <p class="text-xs text-slate-500">행사 일정, 장소 안내 및 이동 수단 종합 안내</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 py-8 space-y-8">
+    <!-- Section 1: 장소 및 주소 안내 -->
+    <section class="space-y-4">
+      <div class="flex items-center gap-2 mb-4">
+        <i data-lucide="map-pin" class="text-blue-600"></i>
+        <h2 class="text-lg font-bold text-slate-900">1. 주요 장소 및 주소 정보</h2>
+      </div>
+
+      <!-- 대형 약도 배너 (진천선수촌_1_1.jpg 전체 너비 강조 및 크게 보기) -->
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+        <div class="px-5 py-3.5 bg-slate-900 text-white flex flex-wrap items-center justify-between gap-2">
+          <div class="flex items-center gap-2">
+            <span class="px-2.5 py-0.5 bg-blue-500 text-white font-semibold text-xs rounded-full">종합 안내도</span>
+            <h3 class="font-bold text-sm md:text-base">진천선수촌 행사장(챔피언하우스) 및 주차장(화랑관) 도보 이동 동선</h3>
+          </div>
+          <button onclick="openModal('진천선수촌_1_1.jpg', '진천선수촌 행사장 및 주차장 안내도')" class="text-xs bg-white/15 hover:bg-white/25 px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition cursor-pointer">
+            <i data-lucide="maximize-2" class="w-3.5 h-3.5"></i> 크게 확대하기
+          </button>
+        </div>
+        <div class="p-3 md:p-5 bg-slate-100 flex justify-center cursor-zoom-in" onclick="openModal('진천선수촌_1_1.jpg', '진천선수촌 행사장 및 주차장 안내도')">
+          <img src="진천선수촌_1_1.jpg" alt="진천선수촌 행사장 및 주차장 안내도" class="w-full max-h-[540px] object-contain rounded-xl shadow-sm bg-white" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1517649763962-0c6232660102?auto=format&fit=crop&w=600&q=80';">
+        </div>
+        <div class="px-5 py-2.5 bg-blue-50/70 border-t border-slate-200 text-xs text-slate-600 flex items-center justify-between">
+          <span>💡 화랑관 지상주차장 주차 후 파란색 화살표 동선을 따라 챔피언하우스로 도보 이동해 주세요.</span>
+          <span class="text-blue-600 font-semibold hidden sm:inline">사진 클릭 시 전체화면 확대</span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        
+        <!-- 행사장 -->
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+          <div>
+            <span class="px-2.5 py-1 bg-blue-100 text-blue-700 font-semibold text-xs rounded-full">행사장</span>
+            <h3 class="font-bold text-slate-800 text-base mb-1 mt-2">진천선수촌 챔피언하우스</h3>
+            <p class="text-xs text-slate-500 mb-3">충청북도 진천군 광혜원면 선수촌로 105</p>
+            <div class="bg-slate-50 p-2.5 rounded-lg text-xs text-slate-600 mb-3">3층 대강당 입구 앞에서 명단 서명 & 물품 수령 후 입장</div>
+          </div>
+          <button onclick="openModal('진천선수촌_1_1.jpg', '진천선수촌 챔피언하우스 위치')" class="w-full py-2 bg-blue-50 hover:bg-blue-100 text-blue-700 font-semibold text-xs rounded-lg transition flex items-center justify-center gap-1 cursor-pointer">
+            <i data-lucide="zoom-in" class="w-3.5 h-3.5"></i> 상단 약도 크게 보기
+          </button>
+        </div>
+
+        <!-- 주차장 -->
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+          <div>
+            <span class="px-2.5 py-1 bg-emerald-100 text-emerald-700 font-semibold text-xs rounded-full">주차장</span>
+            <h3 class="font-bold text-slate-800 text-base mb-1 mt-2">화랑관 지상주차장</h3>
+            <p class="text-xs text-slate-500 mb-3">충청북도 진천군 광혜원면 선수촌로 105</p>
+            <div class="bg-slate-50 p-2.5 rounded-lg text-xs text-slate-600 mb-3">행사장 인근 화랑관 앞 지상 주차 공간 이용</div>
+          </div>
+          <button onclick="openModal('진천선수촌_1_1.jpg', '화랑관 지상주차장 위치')" class="w-full py-2 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 font-semibold text-xs rounded-lg transition flex items-center justify-center gap-1 cursor-pointer">
+            <i data-lucide="zoom-in" class="w-3.5 h-3.5"></i> 상단 약도 크게 보기
+          </button>
+        </div>
+
+        <!-- 숙소 -->
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col justify-between">
+          <div>
+            <div class="w-full h-40 bg-slate-100 overflow-hidden relative border-b border-slate-100 cursor-zoom-in" onclick="openModal('호텔시티 진천점.png', '호텔시티 진천점')">
+              <img src="호텔시티 진천점.png" alt="호텔시티 진천점" class="w-full h-full object-cover hover:scale-105 transition duration-300" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80';">
+              <span class="absolute top-2 left-2 px-2 py-0.5 bg-purple-600 text-white font-semibold text-[11px] rounded-full shadow">숙소 전경</span>
+            </div>
+            <div class="p-4">
+              <span class="px-2.5 py-1 bg-purple-100 text-purple-700 font-semibold text-xs rounded-full">숙소</span>
+              <h3 class="font-bold text-slate-800 text-base mb-1 mt-2">호텔시티 진천점</h3>
+              <p class="text-xs text-slate-500 mb-2">충청북도 진천군 광혜원면 진광로 1278-39</p>
+              <div class="bg-slate-50 p-2 rounded-lg text-xs text-slate-600">체크인 17:40부터 / 숙소 키 분배</div>
+            </div>
+          </div>
+          <div class="p-2 bg-slate-50 border-t border-slate-100 text-[10px] text-center text-slate-500 font-medium">🏨 호텔시티 진천점[cite: 3]</div>
+        </div>
+
+        <!-- 식당 -->
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col justify-between">
+          <div>
+            <div class="w-full h-40 bg-slate-100 overflow-hidden relative border-b border-slate-100 cursor-zoom-in" onclick="openModal('선수촌한우정육식당.jpg', '선수촌한우정육식당')">
+              <img src="선수촌한우정육식당.jpg" alt="선수촌한우정육식당" class="w-full h-full object-cover hover:scale-105 transition duration-300" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80';">
+              <span class="absolute top-2 left-2 px-2 py-0.5 bg-amber-600 text-white font-semibold text-[11px] rounded-full shadow">식당 전경</span>
+            </div>
+            <div class="p-4">
+              <span class="px-2.5 py-1 bg-amber-100 text-amber-700 font-semibold text-xs rounded-full">식당</span>
+              <h3 class="font-bold text-slate-800 text-base mb-1 mt-2">선수촌한우정육식당</h3>
+              <p class="text-xs text-slate-500 mb-2">충청북도 진천군 광혜원면 장기길 31</p>
+              <div class="bg-slate-50 p-2 rounded-lg text-xs text-slate-600">주차 협소, 대형 버스 이동 권장</div>
+            </div>
+          </div>
+          <div class="p-2 bg-slate-50 border-t border-slate-100 text-[10px] text-center text-slate-500 font-medium">🥩 선수촌한우정육식당[cite: 2]</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 2: 이동 수단 -->
+    <section>
+      <div class="flex items-center gap-2 mb-4">
+        <i data-lucide="bus" class="text-blue-600"></i>
+        <h2 class="text-lg font-bold text-slate-900">2. 구간별 이동 수단 및 방법 안내</h2>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden">
+          <div class="w-2 h-full bg-blue-500 absolute left-0 top-0"></div>
+          <span class="text-xs text-slate-400 font-medium">STEP 1</span>
+          <h3 class="text-base font-bold text-slate-800 mt-0.5 mb-2">행사장 -> 숙소</h3>
+          <p class="text-sm text-slate-600 mb-2">이동 수단: 개인 차량 (약 5분 소요)</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden ring-2 ring-amber-400/50">
+          <div class="w-2 h-full bg-amber-500 absolute left-0 top-0"></div>
+          <span class="text-xs text-amber-600 font-bold">STEP 2 (시간 엄수)</span>
+          <h3 class="text-base font-bold text-slate-800 mt-0.5 mb-2">숙소 -> 식당</h3>
+          <p class="text-sm text-slate-600 mb-2">이동 수단: 단체 셔틀버스 (약 5분 소요)</p>
+          <div class="bg-amber-50 p-2.5 rounded-xl text-xs text-amber-900 font-semibold">18:20까지 로비 앞 모임 필수!</div>
+        </div>
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden">
+          <div class="w-2 h-full bg-purple-500 absolute left-0 top-0"></div>
+          <span class="text-xs text-slate-400 font-medium">STEP 3</span>
+          <h3 class="text-base font-bold text-slate-800 mt-0.5 mb-2">식당 -> 숙소</h3>
+          <p class="text-sm text-slate-600 mb-2">복귀 셔틀: 21:00 (1회차 운행)</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: 타임테이블 -->
+    <section>
+      <div class="flex items-center gap-2 mb-4">
+        <i data-lucide="clock-3" class="text-blue-600"></i>
+        <h2 class="text-lg font-bold text-slate-900">3. 행사 일정 및 타임테이블</h2>
+      </div>
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-3 text-sm">
+        <div class="p-3 bg-slate-50 rounded-xl"><b>- 14:00</b> | 집결 및 등록 (챔피언하우스 3층 대강당)</div>
+        <div class="p-3 bg-slate-50 rounded-xl"><b>14:00 - 14:20</b> | 개회식 및 기념사진 촬영</div>
+
+        <!-- 1부 세션 -->
+        <div class="p-4 bg-amber-50/60 rounded-xl border border-amber-200 space-y-2">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 border-b border-amber-200 pb-2">
+            <span class="font-bold text-amber-900 text-base">14:20 - 15:30 | 1부 : 2026년 사업 성과 공유 및 현장지원 사례</span>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs text-amber-900">
+            <div class="bg-white p-2.5 rounded-lg border border-amber-100 flex justify-between items-center">
+              <span>·국가대표 현장밀착형 스포츠과학지원 사업 성과 공유</span>
+              <span class="font-bold bg-amber-100 text-amber-800 px-2 py-0.5 rounded">김기태 센터장</span>
+            </div>
+            <div class="bg-white p-2.5 rounded-lg border border-amber-100 flex justify-between items-center">
+              <span>· 사격 국가대표 현장지원 사례</span>
+              <span class="font-bold bg-amber-100 text-amber-800 px-2 py-0.5 rounded">장태석 선임연구위원</span>
+            </div>
+            <div class="bg-white p-2.5 rounded-lg border border-amber-100 flex justify-between items-center">
+              <span>· 배드민턴 국가대표 현장지원 사례</span>
+              <span class="font-bold bg-amber-100 text-amber-800 px-2 py-0.5 rounded">박원일 연구위원</span>
+            </div>
+            <div class="bg-white p-2.5 rounded-lg border border-amber-100 flex justify-between items-center">
+              <span>· AI 활용한 스포츠과학지원 고도화 전략</span>
+              <span class="font-bold bg-amber-100 text-amber-800 px-2 py-0.5 rounded">조선미 연구위원</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-2 bg-slate-100 text-xs rounded-lg">15:30 - 15:40 | 휴식 (10분)</div>
+
+        <!-- 2부 세션 -->
+        <div class="p-4 bg-purple-50/60 rounded-xl border border-purple-200 space-y-2">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 border-b border-purple-200 pb-2">
+            <span class="font-bold text-purple-900 text-base">15:40 - 16:30 | 2부 : [초청발표] 아시안게임 지원 사례 </span>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-2 text-xs text-purple-900">
+            <div class="bg-white p-2.5 rounded-lg border border-purple-100 flex flex-col justify-between gap-2">
+              <span>· Gearing up for LA Olympic Game</span>
+              <span class="font-bold bg-purple-100 text-purple-800 px-2 py-0.5 rounded self-end">배중현 대한체육회 메디컬센터 전문의</span>
+            </div>
+            <div class="bg-white p-2.5 rounded-lg border border-purple-100 flex flex-col justify-between gap-2">
+              <span>· LA올림픽 대비 데이터 기반 종목별 맞춤형 체력지원전략</span>
+              <span class="font-bold bg-purple-100 text-purple-800 px-2 py-0.5 rounded self-end">박정기 훈련기획부 주무</span>
+            </div>
+            <div class="bg-white p-2.5 rounded-lg border border-purple-100 flex flex-col justify-between gap-2">
+              <span>· 경기력 차이를 좁히다. 데이터에서 현장으로, 현장에서 다음 경기로</span>
+              <span class="font-bold bg-purple-100 text-purple-800 px-2 py-0.5 rounded self-end">김태완 센터장</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-2 bg-slate-100 text-xs rounded-lg">16:30 - 16:40 | 휴식 (10분)</div>
+
+        <!-- 3부 세션 -->
+        <div class="p-4 bg-blue-50/60 rounded-xl border border-blue-200 space-y-2">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 border-b border-blue-200 pb-2">
+            <span class="font-bold text-blue-900 text-base">16:40 - 17:40 | 3부 : 2028 LA올림픽 스포츠과학지원 전략</span>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs text-blue-900">
+            <div class="bg-white p-2.5 rounded-lg border border-blue-100 flex justify-between items-center">
+              <span>· 16:40-17:30 종목별 의견 수렴 및 종합토론</span>
+              <span class="font-bold bg-blue-100 text-blue-800 px-2 py-0.5 rounded">지도자 및 연맹(협회) 관계자</span>
+            </div>
+            <div class="bg-white p-2.5 rounded-lg border border-blue-100 flex justify-between items-center">
+              <span>· 17:30-17:40 종합 총평</span>
+              <span class="font-bold bg-blue-100 text-blue-800 px-2 py-0.5 rounded">박세정 스포츠과학연구실장</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-3 bg-slate-50 rounded-xl"><b>17:40 - 18:30</b> | 숙소 이동 및 체크인</div>
+        <div class="p-3 bg-emerald-50 rounded-xl"><b>18:30 - 20:00</b> | 석식 및 종목별 간담회 (선수촌한우정육식당)</div>
+      </div>
+    </section>
+
+    <!-- Section 4: 안내 사항 -->
+    <section class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 text-xs text-slate-600 space-y-1.5">
+      <h3 class="font-bold text-slate-800 text-sm mb-2">안내 사항 및 각주</h3>
+      <p>[1] 셔틀버스는 정시 출발하므로 18:20까지 숙소 입구 앞 집결 부탁드립니다.</p>
+      <p>[2] 복귀 셔틀은 21:00 단 1회 운행합니다.</p>
+      <p>[3] 숙소 체크아웃 시 로비 키 반납 및 서명 필수입니다.</p>
+      <p>[4] 문의: 이영린 분석연구원 (010-4311-3142) </p>
+    </section>
+  </main>
+
+  <footer class="text-center py-6 text-xs text-slate-400 border-t border-slate-200 mt-12">
+    © 2026 국가대표스포츠과학지원센터. All rights reserved.
+  </footer>
+
+  <!-- 이미지 전체화면 확대 모달 -->
+  <div id="imageModal" class="fixed inset-0 bg-black/80 z-50 hidden items-center justify-center p-4 backdrop-blur-sm" onclick="closeModal()">
+    <div class="relative max-w-5xl w-full bg-white rounded-2xl overflow-hidden shadow-2xl" onclick="event.stopPropagation()">
+      <div class="px-4 py-3 bg-slate-900 text-white flex items-center justify-between">
+        <span id="modalTitle" class="font-bold text-sm">이미지 확대보기</span>
+        <button onclick="closeModal()" class="p-1 hover:bg-white/20 rounded-lg transition cursor-pointer">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <div class="p-2 bg-slate-100 flex justify-center">
+        <img id="modalImg" src="" alt="확대 이미지" class="max-h-[82vh] w-auto object-contain rounded-lg">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    function openModal(src, title) {
+      document.getElementById('modalImg').src = src;
+      document.getElementById('modalTitle').textContent = title;
+      const modal = document.getElementById('imageModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('imageModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeModal();
+    });
+  </script>
+</body>
+</html>
